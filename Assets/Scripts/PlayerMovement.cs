@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_grounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
         {
+            ZeroVerticalVelocity();
             _rigidBody2D.AddForce(Vector2.up * jumpImpulse, ForceMode2D.Impulse);
         }
 
@@ -59,10 +60,6 @@ public class PlayerMovement : MonoBehaviour
         if (hitGround0.collider != null || hitGround1.collider != null)
         {
             _grounded = true;
-            if (_rigidBody2D.velocity.SqrMagnitude() < 0.0f)
-            {
-                ZeroVerticalVelocity();
-            }
         }
         else
         {

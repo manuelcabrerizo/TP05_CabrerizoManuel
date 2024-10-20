@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEngine.UI.Image;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 30.0f;
     [SerializeField] private float jumpImpulse = 100.0f;
 
-    private Vector2 _movement;
+    private float _movement;
     private bool _grounded;
 
     // Start is called before the first frame update
@@ -25,18 +23,14 @@ public class PlayerMovement : MonoBehaviour
     {
         ProcessGrounded();
 
-        _movement = new Vector2();
+        _movement = 0.0f;
         if (Input.GetKey(KeyCode.D))
         {
-            _movement.x += 1;
+            _movement += 1;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            _movement.x -= 1;
-        }
-        if(_movement.SqrMagnitude() > 0)
-        {
-            _movement.Normalize();
+            _movement -= 1;
         }
 
         if (_grounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
@@ -48,8 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidBody2D.AddForce(_movement * speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-
+        _rigidBody2D.AddForce(Vector2.right * _movement * speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 
     private void ProcessGrounded()
@@ -66,12 +59,22 @@ public class PlayerMovement : MonoBehaviour
         if (hitGround0.collider != null || hitGround1.collider != null)
         {
             _grounded = true;
+            if (_rigidBody2D.velocity.SqrMagnitude() < 0.0f)
+            {
+                ZeroVerticalVelocity();
+            }
         }
         else
         {
             _grounded = false;
-        }
-        
+        } 
+    }
+
+    private void ZeroVerticalVelocity()
+    {
+        Vector2 newVelocity = _rigidBody2D.velocity;
+        newVelocity.y = 0.0f;
+        _rigidBody2D.velocity = newVelocity;
     }
 
 }

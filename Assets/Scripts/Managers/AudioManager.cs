@@ -11,6 +11,8 @@ public enum AudioSourceType
 
 public class AudioManager : MonoBehaviour
 {
+    // TODO: put "_" prefix on private members ...
+
     public static AudioManager Instance;
 
     [SerializeField] private AudioMixer audioMixer;

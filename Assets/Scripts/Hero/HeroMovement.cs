@@ -1,21 +1,28 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class HeroMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidBody2D;
+    private Animator _animator;
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 30.0f;
     [SerializeField] private float jumpImpulse = 100.0f;
 
     private float _movement;
     private bool _grounded;
+    private float _direction;
+
+    public float Direction => _direction;
 
     // Start is called before the first frame update
     void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
+        _animator = spriteRenderer.GetComponent<Animator>();
 
         _grounded = false;
+        _direction = 1;
     }
 
     // Update is called once per frame
@@ -38,6 +45,20 @@ public class PlayerMovement : MonoBehaviour
             ZeroVerticalVelocity();
             _rigidBody2D.AddForce(Vector2.up * jumpImpulse, ForceMode2D.Impulse);
         }
+
+        if (_rigidBody2D.velocity.x > 0.2f)
+        {
+            _direction = 1;
+            spriteRenderer.flipX = false;
+        }
+        else if (_rigidBody2D.velocity.x < -0.2f)
+        {
+            _direction = -1;
+            spriteRenderer.flipX = true;
+        }
+
+        _animator.SetFloat("Velocity", _rigidBody2D.velocity.x);
+        _animator.SetBool("IsGrounded", _grounded);
 
     }
 

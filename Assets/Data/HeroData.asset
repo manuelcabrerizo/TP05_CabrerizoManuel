@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2d946946b2ed34e96704c4665a3003, type: 3}
+  m_Name: HeroData
+  m_EditorClassIdentifier: 
+  Speed: 50
+  JumpImpulse: 50
+  Direction: 1
+  InitialDirection: 1
+  Grounded: 0
+  InitialGrounded: 0
+  MoveLeftButton: 97
+  MoveRightButton: 100
+  JumpButton: 32
+  FireButton: 13
+  WalkClip: {fileID: 0}
+  JumpClip: {fileID: 0}
+  LandClip: {fileID: 0}
+  FireClip: {fileID: 0}
+  HitClip: {fileID: 0}

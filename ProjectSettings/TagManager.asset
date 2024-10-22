@@ -15,10 +15,10 @@ TagManager:
   - 
   - 
   - Solid
-  - EnemySolid
-  - 
-  - 
-  - 
+  - Spikes
+  - Enemy
+  - Hero
+  - Spell
   - 
   - 
   - 

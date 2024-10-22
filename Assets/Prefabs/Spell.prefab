@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6451647878548066112}
   - component: {fileID: 4623433189013568998}
   - component: {fileID: 2227025034710863184}
-  m_Layer: 0
+  - component: {fileID: 3568820046516296581}
+  m_Layer: 13
   m_Name: Spell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,9 +143,21 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.00000011920929}
   serializedVersion: 2
   m_Radius: 0.26619714
+--- !u!114 &3568820046516296581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946786220420600989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87115f16fa0a8d48b561bda55e9cd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

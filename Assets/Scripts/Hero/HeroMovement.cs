@@ -2,21 +2,29 @@ using UnityEngine;
 
 public class HeroMovement : MonoBehaviour
 {
-
     [SerializeField] private HeroData HeroData;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private EntityData EntityData;
 
+    private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody2D;
     private Animator _animator;
     private float _movement;
+    private float _direction;
+    private LayerMask _solid;
+
+    public float Direction => _direction;
 
     void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        _animator = spriteRenderer.GetComponent<Animator>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _animator = GetComponentInChildren<Animator>();
 
         HeroData.Grounded = HeroData.InitialGrounded;
-        HeroData.Direction = HeroData.InitialDirection;
+        _direction = EntityData.InitialDirection;
+
+        _solid = LayerMask.GetMask("Solid");
+
     }
 
     void Update()
@@ -27,10 +35,14 @@ public class HeroMovement : MonoBehaviour
         if (Input.GetKey(HeroData.MoveRightButton))
         {
             _movement += 1;
+            _direction = 1;
+            _spriteRenderer.flipX = false;
         }
         if (Input.GetKey(HeroData.MoveLeftButton))
         {
             _movement -= 1;
+            _direction = -1;
+            _spriteRenderer.flipX = true;
         }
 
         if (HeroData.Grounded && Input.GetKeyDown(HeroData.JumpButton))
@@ -39,25 +51,13 @@ public class HeroMovement : MonoBehaviour
             _rigidBody2D.AddForce(Vector2.up * HeroData.JumpImpulse, ForceMode2D.Impulse);
         }
 
-        if (_rigidBody2D.velocity.x > 0.2f)
-        {
-            HeroData.Direction = 1;
-            spriteRenderer.flipX = false;
-        }
-        else if (_rigidBody2D.velocity.x < -0.2f)
-        {
-            HeroData.Direction = -1;
-            spriteRenderer.flipX = true;
-        }
-
         _animator.SetFloat("Velocity", _rigidBody2D.velocity.x);
         _animator.SetBool("IsGrounded", HeroData.Grounded);
-
     }
 
     private void FixedUpdate()
     {
-        _rigidBody2D.AddForce(Vector2.right * _movement * HeroData.Speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        _rigidBody2D.AddForce(Vector2.right * _movement * EntityData.Speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 
     private void ProcessGrounded()
@@ -68,9 +68,8 @@ public class HeroMovement : MonoBehaviour
         Vector2 origin1 = _rigidBody2D.position + Vector2.right * scaleX;
         Debug.DrawRay(origin0, Vector2.down * scaleY, Color.red);
         Debug.DrawRay(origin1, Vector2.down * scaleY, Color.red);
-
-        RaycastHit2D hitGround0 = Physics2D.Raycast(origin0, Vector2.down, scaleY, 1 << 9);
-        RaycastHit2D hitGround1 = Physics2D.Raycast(origin1, Vector2.down, scaleY, 1 << 9);
+        RaycastHit2D hitGround0 = Physics2D.Raycast(origin0, Vector2.down, scaleY, _solid);
+        RaycastHit2D hitGround1 = Physics2D.Raycast(origin1, Vector2.down, scaleY, _solid);
         if (hitGround0.collider != null || hitGround1.collider != null)
         {
             HeroData.Grounded = true;

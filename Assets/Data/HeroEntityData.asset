@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2d946946b2ed34e96704c4665a3003, type: 3}
-  m_Name: HeroData
+  m_Script: {fileID: 11500000, guid: 26859af9c6eb3bc4a8cf621a4ed57ba5, type: 3}
+  m_Name: HeroEntityData
   m_EditorClassIdentifier: 
-  JumpImpulse: 50
-  Grounded: 0
-  InitialGrounded: 0
-  MoveLeftButton: 97
-  MoveRightButton: 100
-  JumpButton: 32
-  FireButton: 13
+  Speed: 50
+  InitialDirection: 1
+  MaxLife: 5
+  MaxMana: 100
+  WalkClip: {fileID: 0}
+  JumpClip: {fileID: 0}
+  LandClip: {fileID: 0}
+  FireClip: {fileID: 0}
+  HitClip: {fileID: 0}

@@ -3,19 +3,26 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
-    [SerializeField] private EnemyData EnemyData;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private EntityData EntityData;
 
+    private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody2D;
     private Animator _animator;
     private float _direction;
 
+    private LayerMask _solid;
+    private LayerMask _spikes;
+
     void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        _animator = spriteRenderer.GetComponent<Animator>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _animator = GetComponentInChildren<Animator>();
 
-        _direction = EnemyData.InitialDirection;
+        _direction = EntityData.InitialDirection;
+
+        _solid = LayerMask.GetMask("Solid");
+        _spikes = LayerMask.GetMask("Spikes");
     }
 
     void Update()
@@ -23,11 +30,11 @@ public class EnemyMovement : MonoBehaviour
         ProcessMovementDirection();
         if (_rigidBody2D.velocity.x > 0.2f)
         {
-            spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = false;
         }
         else if (_rigidBody2D.velocity.x < -0.2f)
         {
-            spriteRenderer.flipX = true;
+            _spriteRenderer.flipX = true;
         }
 
         _animator.SetFloat("Velocity", _rigidBody2D.velocity.x);
@@ -35,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidBody2D.AddForce(Vector2.right * _direction * EnemyData.Speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        _rigidBody2D.AddForce(Vector2.right * _direction * EntityData.Speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 
     private void ProcessMovementDirection()
@@ -46,34 +53,41 @@ public class EnemyMovement : MonoBehaviour
         Vector2 originRight = _rigidBody2D.position + Vector2.right * scaleX;
         Debug.DrawRay(originLeft, Vector2.down * scaleY, Color.red);
         Debug.DrawRay(originRight, Vector2.down * scaleY, Color.red);
-        RaycastHit2D hitGroundLeft = Physics2D.Raycast(originLeft, Vector2.down, scaleY, 1 << 9);
+        RaycastHit2D hitGroundLeft = Physics2D.Raycast(originLeft, Vector2.down, scaleY, _solid);
         if (hitGroundLeft.collider == null)
         {
-            _rigidBody2D.velocity = new Vector2();
+            ZeroHorizontalVelocity();
             _direction = 1.0f;
         }
-        RaycastHit2D hitGroundRight = Physics2D.Raycast(originRight, Vector2.down, scaleY, 1 << 9);
+        RaycastHit2D hitGroundRight = Physics2D.Raycast(originRight, Vector2.down, scaleY, _solid);
         if (hitGroundRight.collider == null)
         {
-            _rigidBody2D.velocity = new Vector2();
+            ZeroHorizontalVelocity();
             _direction = -1.0f;
         }
 
         Vector2 origin = _rigidBody2D.position + Vector2.down * 0.25f;
         Debug.DrawRay(origin, Vector2.left * scaleX, Color.cyan);
         Debug.DrawRay(origin, Vector2.right * scaleX, Color.cyan);
-        RaycastHit2D hitWallLeft = Physics2D.Raycast(origin, Vector2.left, scaleX, (1 << 9) | (1 << 10));
+        RaycastHit2D hitWallLeft = Physics2D.Raycast(origin, Vector2.left, scaleX, _solid|_spikes);
         if (hitWallLeft.collider != null)
         {
-            _rigidBody2D.velocity = new Vector2();
+            ZeroHorizontalVelocity();
             _direction = 1.0f;
         }
-        RaycastHit2D hitWallRight = Physics2D.Raycast(origin, Vector2.right, scaleX, (1 << 9) | (1 << 10));
+        RaycastHit2D hitWallRight = Physics2D.Raycast(origin, Vector2.right, scaleX, _solid|_spikes);
         if (hitWallRight.collider != null)
         {
-            _rigidBody2D.velocity = new Vector2();
+            ZeroHorizontalVelocity();
             _direction = -1.0f;
         }
+    }
+
+    private void ZeroHorizontalVelocity()
+    {
+        Vector2 newVelocity = _rigidBody2D.velocity;
+        newVelocity.x = 0.0f;
+        _rigidBody2D.velocity = newVelocity;
     }
 
 }

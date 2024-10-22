@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroMovement : MonoBehaviour
 {
     [SerializeField] private HeroData HeroData;
     [SerializeField] private EntityData EntityData;
+    [SerializeField] private Image dobleJumpImage;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody2D;
@@ -11,6 +13,10 @@ public class HeroMovement : MonoBehaviour
     private float _movement;
     private float _direction;
     private LayerMask _solid;
+
+    private int _jumpCount;
+    private int _maxJumps;
+    private float _dobleJumpTimer;
 
     public float Direction => _direction;
 
@@ -24,12 +30,16 @@ public class HeroMovement : MonoBehaviour
         _direction = EntityData.InitialDirection;
 
         _solid = LayerMask.GetMask("Solid");
+        _jumpCount = 0;
+        _maxJumps = 1;
+        _dobleJumpTimer = 0;
 
     }
 
     void Update()
     {
         ProcessGrounded();
+        ProcessDobleJump();
 
         _movement = 0.0f;
         if (Input.GetKey(HeroData.MoveRightButton))
@@ -45,10 +55,15 @@ public class HeroMovement : MonoBehaviour
             _spriteRenderer.flipX = true;
         }
 
-        if (HeroData.Grounded && Input.GetKeyDown(HeroData.JumpButton))
+        if (Input.GetKeyDown(HeroData.JumpButton))
         {
-            ZeroVerticalVelocity();
-            _rigidBody2D.AddForce(Vector2.up * HeroData.JumpImpulse, ForceMode2D.Impulse);
+            if (((_jumpCount == 0) && HeroData.Grounded) ||
+                ((_jumpCount > 0) && (_jumpCount < _maxJumps)))
+            {
+                ZeroVerticalVelocity();
+                _rigidBody2D.AddForce(Vector2.up * HeroData.JumpImpulse, ForceMode2D.Impulse);
+                _jumpCount++;
+            }
         }
 
         _animator.SetFloat("Velocity", _rigidBody2D.velocity.x);
@@ -72,6 +87,10 @@ public class HeroMovement : MonoBehaviour
         RaycastHit2D hitGround1 = Physics2D.Raycast(origin1, Vector2.down, scaleY, _solid);
         if (hitGround0.collider != null || hitGround1.collider != null)
         {
+            if (HeroData.Grounded == false) 
+            {
+                _jumpCount = 0;    
+            }
             HeroData.Grounded = true;
         }
         else
@@ -85,6 +104,25 @@ public class HeroMovement : MonoBehaviour
         Vector2 newVelocity = _rigidBody2D.velocity;
         newVelocity.y = 0.0f;
         _rigidBody2D.velocity = newVelocity;
+    }
+
+    private void ProcessDobleJump()
+    {
+        if (_dobleJumpTimer <= 0)
+        {
+            _maxJumps = 1;
+        }
+        else
+        {
+            _dobleJumpTimer -= Time.deltaTime;
+        }
+        dobleJumpImage.fillAmount = _dobleJumpTimer / HeroData.DobleJumpPowerUpDurationInSeconds;
+    }
+
+    public void ActivateDobleJump()
+    {
+        _dobleJumpTimer = HeroData.DobleJumpPowerUpDurationInSeconds;
+        _maxJumps = 2;
     }
 
 }

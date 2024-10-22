@@ -75,4 +75,10 @@ public class EntityLife : MonoBehaviour
             _canvas.enabled = false;
         }
     }
+
+    public void IncrementLife()
+    {
+        _life = Math.Min(_life + 1, EntityData.MaxLife);
+        lifeImage.fillAmount = (float)_life / (float)EntityData.MaxLife;
+    }
 }

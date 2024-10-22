@@ -7,7 +7,6 @@ public class EntityData : ScriptableObject
     [Header("Stats")]
     public float Speed = 50.0f;
     public int MaxLife = 5;
-    public int MaxMana = 100;
 
     [Header("Config")]
     public float InitialDirection = 1.0f;

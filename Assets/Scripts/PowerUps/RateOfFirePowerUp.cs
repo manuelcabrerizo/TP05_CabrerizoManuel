@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class RateOfFirePowerUp : MonoBehaviour
 {
-    [SerializeField] GameObject _hero;
-
-    private HeroSpell _heroSpell;
-    void Awake()
-    {
-        _heroSpell = _hero.GetComponent<HeroSpell>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _heroSpell.IncrementRateOfFire();
+        GameManager.Instance.ActivateRofPowerUp();
+
+        foreach (SpawnedPowerUp powerUp in PowerUpSpawner.Instance.GetSpawnedPowerUps())
+        {
+            if (powerUp.Obj == gameObject)
+            {
+                powerUp.timer = 0;
+                return;
+            }
+        }
 
         Destroy(gameObject);
     }

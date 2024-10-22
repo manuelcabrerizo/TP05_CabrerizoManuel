@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d9cfa5e33ff75408daf4bd6114979d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 1218955861}
 --- !u!1001 &275722051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8027,6 +8028,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1491638135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1491638136}
+  - component: {fileID: 1491638137}
+  m_Layer: 0
+  m_Name: PowerUpSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1491638136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491638135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1491638137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491638135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcd16b981068d64da124a36ee04e193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpPrefabs:
+  - {fileID: 8119417053165973661, guid: 022aa16dd8f4184438bfb77ad547e6ab, type: 3}
+  - {fileID: 5663352568548880804, guid: 020627d582e7f2d45a58b04978116400, type: 3}
+  - {fileID: 6741181741064821987, guid: f3349870729b4dc4b800e15cd27e57bb, type: 3}
+  collectionCheck: 1
+  defaultCapacity: 20
+  maxSize: 100
 --- !u!4 &1545710932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5508712521688760393, guid: e0fa85814d1c40142930af1a3a159aef, type: 3}
@@ -8757,6 +8809,7 @@ SceneRoots:
   - {fileID: 571501794943893378}
   - {fileID: 1146009566}
   - {fileID: 1903660574}
+  - {fileID: 1491638136}
   - {fileID: 2067784507}
   - {fileID: 245161116}
   - {fileID: 1273811729}

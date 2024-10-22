@@ -12,7 +12,11 @@ public class GameManager : MonoBehaviour
     public PauseState PauseState => pauseState;
 
     // Gameplay GameObjects
-    // TODO: ...
+    [SerializeField] private GameObject hero;
+
+    private EntityLife _heroLife;
+    private HeroMovement _heroMovement;
+    private HeroSpell _heroSpell;
 
     void Awake()
     {
@@ -28,6 +32,10 @@ public class GameManager : MonoBehaviour
         stateMachine = new StateMachine();
         playState = new PlayState();
         pauseState = new PauseState();
+
+        _heroLife = hero.GetComponent<EntityLife>();
+        _heroMovement = hero.GetComponent<HeroMovement>();
+        _heroSpell = hero.GetComponent<HeroSpell>();
     }
 
     // Start is called before the first frame update
@@ -42,9 +50,19 @@ public class GameManager : MonoBehaviour
         stateMachine.Update(Time.deltaTime);
     }
 
-    public void ResetGameplayObjects()
+    public void ActivateLifePowerUp()
     {
-        // TODO: ???
+        _heroLife.IncrementLife();
+    }
+
+    public void ActivateDobleJumpPowerUp()
+    {
+        _heroMovement.ActivateDobleJump();
+    }
+
+    public void ActivateRofPowerUp()
+    {
+        _heroSpell.IncrementRateOfFire();
     }
 
     public void PushState(IState state)

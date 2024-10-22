@@ -17,6 +17,11 @@ public class EnemyController : MonoBehaviour
         {
             if (_hitParticleSystem.isStopped)
             {
+                SpawnedPowerUp powerUp = PowerUpSpawner.Instance.SpawnPowerUp(10);
+                powerUp.Obj.transform.position = transform.position;
+                powerUp.Sprite.enabled = true;
+                powerUp.Collider.enabled = true;
+
                 Destroy(gameObject);
             }
         }

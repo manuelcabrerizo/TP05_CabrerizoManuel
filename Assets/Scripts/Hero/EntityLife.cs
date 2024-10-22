@@ -73,6 +73,7 @@ public class EntityLife : MonoBehaviour
             _collider.enabled = false;
             _spriteRenderer.enabled = false;
             _canvas.enabled = false;
+            _rigidbody2D.gravityScale = 0;
         }
     }
 

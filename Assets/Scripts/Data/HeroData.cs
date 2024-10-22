@@ -16,5 +16,4 @@ public class HeroData : ScriptableObject
     public KeyCode MoveRightButton = KeyCode.D;
     public KeyCode JumpButton = KeyCode.Space;
     public KeyCode FireButton = KeyCode.Return;
-
 }

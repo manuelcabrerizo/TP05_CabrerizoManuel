@@ -12,11 +12,20 @@ public class EntityLife : MonoBehaviour
     public int Life => _life;
 
     private Rigidbody2D _rigidbody2D;
+    private CapsuleCollider2D _collider;
+    private ParticleSystem _hitParticleSystem;
+    private SpriteRenderer _spriteRenderer;
+
+    private Canvas _canvas;
+
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-
+        _collider = GetComponentInChildren<CapsuleCollider2D>();
+        _hitParticleSystem = GetComponentInChildren<ParticleSystem>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _canvas = GetComponentInChildren<Canvas>();
         _life = EntityData.MaxLife;
     }
 
@@ -59,5 +68,11 @@ public class EntityLife : MonoBehaviour
     {
         _life = Math.Max(_life - 1, 0);
         lifeImage.fillAmount = (float)_life / (float)EntityData.MaxLife;
+        _hitParticleSystem.Play();
+        if (_life <= 0) {
+            _collider.enabled = false;
+            _spriteRenderer.enabled = false;
+            _canvas.enabled = false;
+        }
     }
 }

@@ -6218,17 +6218,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5508712521688760393, guid: e0fa85814d1c40142930af1a3a159aef, type: 3}
   m_PrefabInstance: {fileID: 280612848}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1115076091 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1412663697544691716, guid: af9d10d7ba82b3c4e919afbf68378aeb, type: 3}
-  m_PrefabInstance: {fileID: 571501794943893378}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1137216064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5508712521688760393, guid: e0fa85814d1c40142930af1a3a159aef, type: 3}
@@ -8017,14 +8006,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1552360707785207094, guid: af9d10d7ba82b3c4e919afbf68378aeb, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3649127717897227837, guid: af9d10d7ba82b3c4e919afbf68378aeb, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4067164035784143001, guid: af9d10d7ba82b3c4e919afbf68378aeb, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -8068,14 +8049,6 @@ PrefabInstance:
     - target: {fileID: 4088187057533557773, guid: af9d10d7ba82b3c4e919afbf68378aeb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397024318449982670, guid: af9d10d7ba82b3c4e919afbf68378aeb, type: 3}
-      propertyPath: lifeImage
-      value: 
-      objectReference: {fileID: 1115076091}
-    - target: {fileID: 7556571410967440383, guid: af9d10d7ba82b3c4e919afbf68378aeb, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

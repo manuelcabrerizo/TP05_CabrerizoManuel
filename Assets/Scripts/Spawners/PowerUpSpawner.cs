@@ -7,6 +7,7 @@ public class SpawnedPowerUp
     public GameObject Obj;
     public SpriteRenderer Sprite;
     public CircleCollider2D Collider;
+    public Rigidbody2D Body;
     public int Index;
     public float timer;
 }
@@ -80,6 +81,7 @@ public class PowerUpSpawner : MonoBehaviour
         int index = Random.Range(0, powerUpPrefabs.Count);
         SpawnedPowerUp powerUp = _pools[index].Get();
         powerUp.timer = lifeTime;
+        powerUp.Body.bodyType = RigidbodyType2D.Dynamic;
         _spawnedPowerUp.Add(powerUp);
         return powerUp;
     }
@@ -117,10 +119,12 @@ public class PowerUpSpawner : MonoBehaviour
         powerUp.Obj = obj;
         powerUp.Sprite = obj.GetComponentInChildren<SpriteRenderer>();
         powerUp.Collider = obj.GetComponent<CircleCollider2D>();
+        powerUp.Body = obj.GetComponent<Rigidbody2D>();
 
         powerUp.Obj.SetActive(false);
         powerUp.Sprite.enabled = false;
         powerUp.Collider.enabled = false;
+        powerUp.Body.bodyType = RigidbodyType2D.Static;
         powerUp.Index = 0;
 
         return powerUp;
@@ -133,10 +137,12 @@ public class PowerUpSpawner : MonoBehaviour
         powerUp.Obj = obj;
         powerUp.Sprite = obj.GetComponentInChildren<SpriteRenderer>();
         powerUp.Collider = obj.GetComponent<CircleCollider2D>();
+        powerUp.Body = obj.GetComponent<Rigidbody2D>();
 
         powerUp.Obj.SetActive(false);
         powerUp.Sprite.enabled = false;
         powerUp.Collider.enabled = false;
+        powerUp.Body.bodyType = RigidbodyType2D.Static;
         powerUp.Index = 1;
 
         return powerUp;
@@ -149,10 +155,12 @@ public class PowerUpSpawner : MonoBehaviour
         powerUp.Obj = obj;
         powerUp.Sprite = obj.GetComponentInChildren<SpriteRenderer>();
         powerUp.Collider = obj.GetComponent<CircleCollider2D>();
+        powerUp.Body = obj.GetComponent<Rigidbody2D>();
 
         powerUp.Obj.SetActive(false);
         powerUp.Sprite.enabled = false;
         powerUp.Collider.enabled = false;
+        powerUp.Body.bodyType = RigidbodyType2D.Static;
         powerUp.Index = 2;
 
         return powerUp;
@@ -163,6 +171,7 @@ public class PowerUpSpawner : MonoBehaviour
         pooledObject.Obj.SetActive(false);
         pooledObject.Sprite.enabled = false;
         pooledObject.Collider.enabled = false;
+        pooledObject.Body.bodyType = RigidbodyType2D.Static;
     }
 
     private void OnGetFromPool(SpawnedPowerUp pooledObject)

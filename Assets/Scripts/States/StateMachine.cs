@@ -57,4 +57,13 @@ public class StateMachine
         }
     }
 
+    public void FixUpdate(float dt)
+    {
+        IState currentState = _states.Peek();
+        if (currentState != null)
+        {
+            currentState.FixProcess(dt);
+        }
+    }
+
 }

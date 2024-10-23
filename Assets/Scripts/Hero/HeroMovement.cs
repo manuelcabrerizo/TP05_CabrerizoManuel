@@ -57,6 +57,11 @@ public class HeroMovement : MonoBehaviour
 
         if (Input.GetKeyDown(HeroData.JumpButton))
         {
+            if (HeroData.Grounded)
+            {
+                _jumpCount = 0;
+            }
+
             if (((_jumpCount == 0) && HeroData.Grounded) ||
                 ((_jumpCount > 0) && (_jumpCount < _maxJumps)))
             {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DragonData
   m_EditorClassIdentifier: 
   Speed: 10
-  MaxLife: 20
+  MaxLife: 100
   InitialDirection: 1
   DamageImpulse: 25
   WalkClip: {fileID: 0}

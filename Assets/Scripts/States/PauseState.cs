@@ -17,6 +17,10 @@ public class PauseState : IState
         Time.timeScale = 1;
     }
 
+    public void FixProcess(float dt)
+    {
+    }
+
     public void Process(float dt)
     {
         if (Input.GetKeyDown(KeyCode.Escape))

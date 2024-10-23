@@ -13,6 +13,10 @@ public class PlayState : IState
     {
     }
 
+    public void FixProcess(float dt)
+    {
+    }
+
     public void Process(float dt)
     {
         if (Input.GetKeyDown(KeyCode.Escape))

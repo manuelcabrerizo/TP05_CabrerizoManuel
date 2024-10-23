@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: HeroEntityData
   m_EditorClassIdentifier: 
   Speed: 50
+  MaxLife: 10
   InitialDirection: 1
-  MaxLife: 5
-  MaxMana: 100
+  DamageImpulse: 25
   WalkClip: {fileID: 0}
   JumpClip: {fileID: 0}
   LandClip: {fileID: 0}

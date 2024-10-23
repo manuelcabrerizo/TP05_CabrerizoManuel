@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class DobleJumpPowerUp : MonoBehaviour
 {
+    [SerializeField] private LayerMask layer;
     private Animator _animator;
     void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        _animator.SetBool("Grabbed", true);
-        GameManager.Instance.ActivateDobleJumpPowerUp();
+        if (CheckCollisionLayer(collision.gameObject, layer))
+        {
+            _animator.SetBool("Grabbed", true);
+            GameManager.Instance.ActivateDobleJumpPowerUp();
+            foreach (SpawnedPowerUp powerUp in PowerUpSpawner.Instance.GetSpawnedPowerUps())
+            {
+                if (powerUp.Obj == gameObject)
+                {
+                    powerUp.Collider.enabled = false;
+                    powerUp.Body.bodyType = RigidbodyType2D.Static;
+                    return;
+                }
+            }
+        }
+    }
+
+    private bool CheckCollisionLayer(GameObject gameObject, LayerMask layer)
+    {
+        return ((1 << gameObject.layer) & layer.value) > 0;
     }
 }

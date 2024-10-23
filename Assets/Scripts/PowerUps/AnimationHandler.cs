@@ -13,8 +13,6 @@ public class AnimationHandler : MonoBehaviour
                 return;
             }
         }
-
-        Destroy(obj);
     }
 
 }

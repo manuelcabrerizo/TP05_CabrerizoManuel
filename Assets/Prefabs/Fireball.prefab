@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4623433189013568998}
   - component: {fileID: 2227025034710863184}
   - component: {fileID: 3568820046516296581}
-  m_Layer: 13
-  m_Name: Spell
+  m_Layer: 11
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8946786220420600989}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.27989873, w: 0.96002954}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 614974738536707504}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -32.508}
 --- !u!50 &6451647878548066112
 Rigidbody2D:
   serializedVersion: 4
@@ -51,7 +51,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 903203f0db516de4b8ac0ac1f9666509, type: 3}
+  m_Sprite: {fileID: -1991209003, guid: c41d2de259930e14bb402c11b631dec6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1298657946935140384, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4790002362487765177, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -221,6 +221,30 @@ PrefabInstance:
     - target: {fileID: 8619726637419012162, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619726637419012162, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619726637419012162, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.9572856
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619726637419012162, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619726637419012162, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619726637419012162, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.30566558
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619726637419012162, guid: b297d6e57e67829438f1796f6be1980d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

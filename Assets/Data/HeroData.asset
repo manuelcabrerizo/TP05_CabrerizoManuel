@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2d946946b2ed34e96704c4665a3003, type: 3}
   m_Name: HeroData
   m_EditorClassIdentifier: 
-  RateOfFireInSecons: 1.5
-  RateOfFireInSeconsPowerUp: 0.1
+  RateOfFireInSecons: 1
+  RateOfFireInSeconsPowerUp: 0.2
   RateOfFirePowerUpDurationInSeconds: 10
   DobleJumpPowerUpDurationInSeconds: 10
   JumpImpulse: 50

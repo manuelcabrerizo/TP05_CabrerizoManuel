@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26859af9c6eb3bc4a8cf621a4ed57ba5, type: 3}
   m_Name: BatEntityData
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 2000
   MaxLife: 3
   InitialDirection: 1
   DamageImpulse: 25

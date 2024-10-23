@@ -2,20 +2,29 @@ using UnityEngine;
 
 public class RateOfFirePowerUp : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] private LayerMask layer;
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameManager.Instance.ActivateRofPowerUp();
-
-        foreach (SpawnedPowerUp powerUp in PowerUpSpawner.Instance.GetSpawnedPowerUps())
+        if (CheckCollisionLayer(collision.gameObject, layer))
         {
-            if (powerUp.Obj == gameObject)
+            GameManager.Instance.ActivateRofPowerUp();
+
+            foreach (SpawnedPowerUp powerUp in PowerUpSpawner.Instance.GetSpawnedPowerUps())
             {
-                powerUp.timer = 0;
-                return;
+                if (powerUp.Obj == gameObject)
+                {
+                    powerUp.Collider.enabled = false;
+                    powerUp.Body.bodyType = RigidbodyType2D.Static;
+                    powerUp.timer = 0;
+                    return;
+                }
             }
         }
+    }
 
-        Destroy(gameObject);
+    private bool CheckCollisionLayer(GameObject gameObject, LayerMask layer)
+    {
+        return ((1 << gameObject.layer) & layer.value) > 0;
     }
 
 }

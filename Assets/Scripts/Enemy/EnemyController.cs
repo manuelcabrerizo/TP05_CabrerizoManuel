@@ -21,7 +21,6 @@ public class EnemyController : MonoBehaviour
                 powerUp.Obj.transform.position = transform.position;
                 powerUp.Sprite.enabled = true;
                 powerUp.Collider.enabled = true;
-
                 Destroy(gameObject);
             }
         }

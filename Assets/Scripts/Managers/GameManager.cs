@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     // Gameplay GameObjects
     [SerializeField] private GameObject hero;
+    public GameObject Hero => hero;
 
     private EntityLife _heroLife;
     private HeroMovement _heroMovement;

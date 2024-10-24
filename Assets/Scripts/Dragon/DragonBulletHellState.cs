@@ -112,8 +112,6 @@ public class DragonBulletHellState : MonoBehaviour, IState
         while (!_pauseCorutine)
         {
             yield return new WaitForSeconds(_timePerUpdate);
-
-
             float angle = Random.Range(0.5f, Mathf.PI - 0.5f);
             Vector2 direction = RotateVector2(Vector2.right, angle);
             SpawnedSpell spell = _spellSpawner.SpawnSpell(1.0f);

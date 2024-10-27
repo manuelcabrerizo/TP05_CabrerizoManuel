@@ -17,7 +17,7 @@ MonoBehaviour:
   RateOfFirePowerUpDurationInSeconds: 10
   DobleJumpPowerUpDurationInSeconds: 10
   JumpImpulse: 50
-  Grounded: 0
+  Grounded: 1
   InitialGrounded: 0
   MoveLeftButton: 97
   MoveRightButton: 100

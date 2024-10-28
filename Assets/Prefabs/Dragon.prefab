@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityData: {fileID: 11400000, guid: 6a0f5b40f72a02346a86788218fcf0c1, type: 2}
+  AudioClipsData: {fileID: 11400000, guid: 154a6fb537cee714e9b18189afd084bd, type: 2}
   layer:
     serializedVersion: 2
     m_Bits: 8192

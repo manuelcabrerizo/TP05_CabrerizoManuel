@@ -26,7 +26,7 @@ public class UIMainMenu : MonoBehaviour
     private void OnPlayButtonClicked()
     {
         UIMenuManager.Instance.PlayClickSound();
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("GamePlay");
     }
 
     private void OnSettingsButtonClicked()

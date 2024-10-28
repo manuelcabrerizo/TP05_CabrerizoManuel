@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26859af9c6eb3bc4a8cf621a4ed57ba5, type: 3}
-  m_Name: HeroEntityData
+  m_Script: {fileID: 11500000, guid: f4367fd631d31e54fad9243a48d3a5dd, type: 3}
+  m_Name: AudioClipsData
   m_EditorClassIdentifier: 
-  Speed: 50
-  MaxLife: 10
-  InitialDirection: 1
-  DamageImpulse: 25
+  MainMusicClip: {fileID: 0}
+  BossBattleMusicClip: {fileID: 0}
   JumpClip: {fileID: 8300000, guid: 73aa159c3ddc80a44bbd6deb62a94594, type: 3}
   LandClip: {fileID: 8300000, guid: 79c00106ad40644479544756b1b42e38, type: 3}
   FireClip: {fileID: 8300000, guid: f4bb38a85c6fd534294a7897892331ea, type: 3}
   HitClip: {fileID: 8300000, guid: 7c0ca0f1a92fd804ab62d02c13e5686b, type: 3}
+  GrabClip: {fileID: 8300000, guid: b60dd7b4981837b4d87293864124c8f8, type: 3}
+  DeadClip: {fileID: 8300000, guid: d354685b34ea8544ab9f0f4d89bd5fa7, type: 3}
+  GameOverClip: {fileID: 8300000, guid: 42d19555d238bdd46b061d5756a7a39e, type: 3}

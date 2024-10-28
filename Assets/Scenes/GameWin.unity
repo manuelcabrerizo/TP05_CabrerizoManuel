@@ -292,9 +292,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273811729}
-  - component: {fileID: 1273811731}
+  - component: {fileID: 1273811732}
   m_Layer: 0
-  m_Name: UIGameOverManager
+  m_Name: UIGameWinManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +315,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1273811731
+--- !u!114 &1273811732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1273811728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b77f7f0d612d6f242986a7a6c1707e63, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b6b5eb581be7224aaead969adaf81a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectAudioClip: {fileID: 8300000, guid: 6257c904633527d4b9c41774543081c2, type: 3}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 2024456053}
   - component: {fileID: 2024456052}
   m_Layer: 5
-  m_Name: GameOverText
+  m_Name: GameWinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,7 +497,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 350.5974, y: 127.3712}
+  m_SizeDelta: {x: 502.552, y: 119.9224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2024456052
 MonoBehaviour:
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You are Dead
+  m_text: Victory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdecb77f87299cb4fb2c84a8ae190cce, type: 2}
   m_sharedMaterial: {fileID: 2496272802214397433, guid: bdecb77f87299cb4fb2c84a8ae190cce, type: 2}
@@ -528,8 +528,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 8980813302997023413}
   - component: {fileID: 8980813302997023414}
   m_Layer: 5
-  m_Name: GameOverMenu
+  m_Name: GameWinMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -878,7 +878,7 @@ PrefabInstance:
     - target: {fileID: 1266132804121911980, guid: b6d011092a103044ca255ccf4d94bf98, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 5e689375fee51dc4685d9096815c4139, type: 3}
+      objectReference: {fileID: 8300000, guid: 94bcedc15900fd34aa71321c9261a313, type: 3}
     - target: {fileID: 3201361411865182614, guid: b6d011092a103044ca255ccf4d94bf98, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -1070,11 +1070,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3260317548936101218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d636e12ba73cbf43a616dc3d0acfdca, type: 3}
+  m_Script: {fileID: 11500000, guid: 04b6baf50f7f99040a6cca7ad1e8992a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuButton: {fileID: 3982770731073066595}
-  AudioClipsData: {fileID: 11400000, guid: 154a6fb537cee714e9b18189afd084bd, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

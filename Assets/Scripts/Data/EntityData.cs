@@ -11,11 +11,4 @@ public class EntityData : ScriptableObject
     [Header("Config")]
     public float InitialDirection = 1.0f;
     public float DamageImpulse = 25.0f;
-
-    [Header("Sounds")]
-    public AudioClip WalkClip;
-    public AudioClip JumpClip;
-    public AudioClip LandClip;
-    public AudioClip FireClip;
-    public AudioClip HitClip;
 }

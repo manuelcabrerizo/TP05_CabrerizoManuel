@@ -87,4 +87,9 @@ public class GameManager : MonoBehaviour
     {
         return stateMachine.PeekState();
     }
+
+    public bool HeroIsDead()
+    {
+        return _heroLife.Life <= 0;
+    }
 }

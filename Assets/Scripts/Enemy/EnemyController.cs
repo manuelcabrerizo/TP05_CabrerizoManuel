@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -21,7 +22,15 @@ public class EnemyController : MonoBehaviour
                 powerUp.Obj.transform.position = transform.position;
                 powerUp.Sprite.enabled = true;
                 powerUp.Collider.enabled = true;
-                Destroy(gameObject);
+                if (gameObject.CompareTag("Dragon"))
+                {
+                    SceneManager.LoadScene("GameWin");
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+
             }
         }
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UIGameOver : MonoBehaviour
+public class UIGameWin : MonoBehaviour
 {
     [SerializeField] private Button mainMenuButton;
 
@@ -10,7 +10,6 @@ public class UIGameOver : MonoBehaviour
     {
         mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
     }
-
     private void Start()
     {
         AudioManager.Instance.PlayMusic();
@@ -23,7 +22,7 @@ public class UIGameOver : MonoBehaviour
 
     private void OnMainMenuButtonClicked()
     {
-        UIGameOverManager.Instance.PlayClickSound();
+        UIGameWinManager.Instance.PlayClickSound();
         SceneManager.LoadScene("MainMenu");
     }
 }

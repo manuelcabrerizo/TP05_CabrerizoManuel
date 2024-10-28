@@ -170,6 +170,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 4096
+  AudioClipsData: {fileID: 11400000, guid: 154a6fb537cee714e9b18189afd084bd, type: 2}
 --- !u!58 &7845881513913435090
 CircleCollider2D:
   m_ObjectHideFlags: 0

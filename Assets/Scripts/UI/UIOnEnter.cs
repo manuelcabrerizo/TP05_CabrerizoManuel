@@ -10,9 +10,17 @@ public class UIOnEnter : MonoBehaviour, IPointerEnterHandler
         {
             UIMenuManager.Instance.PlaySelectSound();
         }
-        else
+        else if(SceneManager.GetActiveScene().name == "GamePlay")
         {
             UIGameplayManager.Instance.PlaySelectSound();
+        }
+        else if (SceneManager.GetActiveScene().name == "GameOver")
+        {
+            UIGameOverManager.Instance.PlaySelectSound();
+        }
+        else if (SceneManager.GetActiveScene().name == "GameWin")
+        {
+            UIGameWinManager.Instance.PlaySelectSound();
         }
     }
 }

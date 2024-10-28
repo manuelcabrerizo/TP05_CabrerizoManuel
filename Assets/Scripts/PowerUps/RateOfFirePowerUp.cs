@@ -3,6 +3,8 @@ using UnityEngine;
 public class RateOfFirePowerUp : MonoBehaviour
 {
     [SerializeField] private LayerMask layer;
+    [SerializeField] private AudioClipsData AudioClipsData;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (CheckCollisionLayer(collision.gameObject, layer))
@@ -13,6 +15,7 @@ public class RateOfFirePowerUp : MonoBehaviour
             {
                 if (powerUp.Obj == gameObject)
                 {
+                    AudioManager.Instance.PlayClip(AudioClipsData.GrabClip, AudioSourceType.SFX);
                     powerUp.Collider.enabled = false;
                     powerUp.Body.bodyType = RigidbodyType2D.Static;
                     powerUp.timer = 0;

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class HeroSpell : MonoBehaviour
 {
     [SerializeField] private HeroData HeroData;
+    [SerializeField] private AudioClipsData AudioClipsData;
     [SerializeField] private Image coolDownImage;
     [SerializeField] private Image rofImage;
 
@@ -38,6 +39,7 @@ public class HeroSpell : MonoBehaviour
         {
             if (Input.GetKey(HeroData.FireButton) && (_timer < 0))
             {
+                AudioManager.Instance.PlayClip(AudioClipsData.FireClip, AudioSourceType.SFX);
                 SpawnedSpell spell = _spellSpawner.SpawnSpell(1.0f);
                 spell.Obj.transform.position = transform.position;
                 spell.Body.position = _rigidbody2D.position;
@@ -52,6 +54,7 @@ public class HeroSpell : MonoBehaviour
         {
             if (_timer < 0)
             {
+                AudioManager.Instance.PlayClip(AudioClipsData.FireClip, AudioSourceType.SFX);
                 SpawnedSpell spell = _spellSpawner.SpawnSpell(1.0f);
                 spell.Obj.transform.position = transform.position;
                 spell.Body.position = _rigidbody2D.position;

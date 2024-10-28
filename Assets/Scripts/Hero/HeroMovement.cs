@@ -5,6 +5,7 @@ public class HeroMovement : MonoBehaviour
 {
     [SerializeField] private HeroData HeroData;
     [SerializeField] private EntityData EntityData;
+    [SerializeField] private AudioClipsData AudioClipsData;
     [SerializeField] private Image dobleJumpImage;
 
     private SpriteRenderer _spriteRenderer;
@@ -65,6 +66,7 @@ public class HeroMovement : MonoBehaviour
             if (((_jumpCount == 0) && HeroData.Grounded) ||
                 ((_jumpCount > 0) && (_jumpCount < _maxJumps)))
             {
+                AudioManager.Instance.PlayClip(AudioClipsData.JumpClip, AudioSourceType.SFX);
                 ZeroVerticalVelocity();
                 _rigidBody2D.AddForce(Vector2.up * HeroData.JumpImpulse, ForceMode2D.Impulse);
                 _jumpCount++;
@@ -94,7 +96,8 @@ public class HeroMovement : MonoBehaviour
         {
             if (HeroData.Grounded == false) 
             {
-                _jumpCount = 0;    
+                AudioManager.Instance.PlayClip(AudioClipsData.LandClip, AudioSourceType.SFX);
+                _jumpCount = 0;
             }
             HeroData.Grounded = true;
         }

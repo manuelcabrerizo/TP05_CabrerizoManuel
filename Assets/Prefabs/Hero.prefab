@@ -337,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeroData: {fileID: 11400000, guid: 8ac52626c007a8e42b6f2fd958b25103, type: 2}
   EntityData: {fileID: 11400000, guid: a8da25edc2b573644be0f42ff1779135, type: 2}
+  AudioClipsData: {fileID: 11400000, guid: 154a6fb537cee714e9b18189afd084bd, type: 2}
   dobleJumpImage: {fileID: 61729083029970371}
 --- !u!114 &3617096371856229372
 MonoBehaviour:
@@ -351,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeroData: {fileID: 11400000, guid: 8ac52626c007a8e42b6f2fd958b25103, type: 2}
+  AudioClipsData: {fileID: 11400000, guid: 154a6fb537cee714e9b18189afd084bd, type: 2}
   coolDownImage: {fileID: 983983474660289967}
   rofImage: {fileID: 8189140057380863760}
 --- !u!114 &6397024318449982670
@@ -366,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityData: {fileID: 11400000, guid: a8da25edc2b573644be0f42ff1779135, type: 2}
+  AudioClipsData: {fileID: 11400000, guid: 154a6fb537cee714e9b18189afd084bd, type: 2}
   layer:
     serializedVersion: 2
     m_Bits: 3072

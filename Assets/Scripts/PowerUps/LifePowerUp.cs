@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class LifePowerUp : MonoBehaviour
 {
-    [SerializeField] LayerMask layer;
+    [SerializeField] private LayerMask layer;
+    [SerializeField] private AudioClipsData AudioClipsData;
     private Animator _animator;
     void Awake()
     {
@@ -19,6 +20,7 @@ public class LifePowerUp : MonoBehaviour
             {
                 if (powerUp.Obj == gameObject)
                 {
+                    AudioManager.Instance.PlayClip(AudioClipsData.GrabClip, AudioSourceType.SFX);
                     powerUp.Collider.enabled = false;
                     powerUp.Body.bodyType = RigidbodyType2D.Static;
                     return;

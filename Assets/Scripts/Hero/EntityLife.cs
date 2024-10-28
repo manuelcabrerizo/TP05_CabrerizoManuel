@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class EntityLife : MonoBehaviour
 { 
     [SerializeField] private EntityData EntityData;
+    [SerializeField] private AudioClipsData AudioClipsData;
     [SerializeField] private LayerMask layer;
     [SerializeField] private Image lifeImage;
 
@@ -69,11 +70,17 @@ public class EntityLife : MonoBehaviour
         _life = Math.Max(_life - 1, 0);
         lifeImage.fillAmount = (float)_life / (float)EntityData.MaxLife;
         _hitParticleSystem.Play();
-        if (_life <= 0) {
+        if (_life <= 0)
+        {
+            AudioManager.Instance.PlayClip(AudioClipsData.DeadClip, AudioSourceType.SFX);
             _collider.enabled = false;
             _spriteRenderer.enabled = false;
             _canvas.enabled = false;
             _rigidbody2D.gravityScale = 0;
+        }
+        else
+        {
+            AudioManager.Instance.PlayClip(AudioClipsData.HitClip, AudioSourceType.SFX);
         }
     }
 

@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class VolumeData : ScriptableObject
 {
-    [Header("Master Volume")]
+    [Header("Volume Settings")]
     public float MasterVolume = 0.5f;
-    [Header("Music Volume")]
     public float MusicVolume = 1.0f;
-    [Header("Sfx Volume")]
     public float SfxVolume = 1.0f;
-    [Header("Ui Volume")]
     public float UIVolume = 1.0f;
 }

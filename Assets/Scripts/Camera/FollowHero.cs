@@ -14,6 +14,8 @@ public class FollowHero : MonoBehaviour
     private Vector2 _velocity;
     private Vector2 _forceAcc;
 
+    public Vector2 Velocity => _velocity;
+
     void Awake()
     {
         _position = transform.position;

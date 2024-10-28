@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     public PauseState PauseState => pauseState;
 
     // Gameplay GameObjects
+    [SerializeField] private Camera camera2d;
     [SerializeField] private GameObject hero;
     public GameObject Hero => hero;
+    public Camera Camera => camera2d;
 
     private EntityLife _heroLife;
     private HeroMovement _heroMovement;

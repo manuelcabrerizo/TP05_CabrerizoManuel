@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager Instance;
 
+    [SerializeField] private VolumeData VolumeData;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource sfxAudioSourcePrefab;
     [SerializeField] private AudioSource uiAudioSourcePrefab;
@@ -69,13 +70,11 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // TODO: try to fix this ...
-        // set the volume to mach the slider at start
-        SetMasterVolume(1.0f);
-        SetMusicVolume(1.0f);
-        SetSoundEffectVolume(1.0f);
-        SetUISoundVolume(1.0f);
-
+        // Set the volume to the stored values
+        AudioManager.Instance.SetMasterVolume(VolumeData.MasterVolume);
+        AudioManager.Instance.SetMusicVolume(VolumeData.MusicVolume);
+        AudioManager.Instance.SetSoundEffectVolume(VolumeData.SfxVolume);
+        AudioManager.Instance.SetUISoundVolume(VolumeData.UIVolume);
         StopMusic();
     }
 

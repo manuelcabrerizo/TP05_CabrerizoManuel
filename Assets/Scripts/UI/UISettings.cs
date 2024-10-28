@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class UISettings : MonoBehaviour
 {
+    [SerializeField] private VolumeData VolumeData;
+
     [SerializeField] private Button backButton;
 
     [SerializeField] private Slider masterVolumeSlider;
@@ -18,6 +20,15 @@ public class UISettings : MonoBehaviour
         musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderValueChange);
         soundEffectVolumeSlider.onValueChanged.AddListener(OnSoundEffectVolumeSliderValueChange);
         uiSoundVolumeSlider.onValueChanged.AddListener(OnUISoundVolumeSliderValueChange);
+    }
+
+    private void Start()
+    {
+        // Initialize the sliders
+        masterVolumeSlider.value = VolumeData.MasterVolume;
+        musicVolumeSlider.value = VolumeData.MusicVolume;
+        soundEffectVolumeSlider.value = VolumeData.SfxVolume;
+        uiSoundVolumeSlider.value = VolumeData.UIVolume;
     }
 
     // Update is called once per frame
@@ -48,21 +59,25 @@ public class UISettings : MonoBehaviour
 
     private void OnMasterVolumeSliderValueChange(float value)
     {
-        AudioManager.Instance.SetMasterVolume(value);
+        VolumeData.MasterVolume = value;
+        AudioManager.Instance.SetMasterVolume(VolumeData.MasterVolume);
     }
 
     private void OnMusicVolumeSliderValueChange(float value)
     {
-        AudioManager.Instance.SetMusicVolume(value);
+        VolumeData.MusicVolume = value;
+        AudioManager.Instance.SetMusicVolume(VolumeData.MusicVolume);
     }
 
     private void OnSoundEffectVolumeSliderValueChange(float value)
     {
-        AudioManager.Instance.SetSoundEffectVolume(value);
+        VolumeData.SfxVolume = value;
+        AudioManager.Instance.SetSoundEffectVolume(VolumeData.SfxVolume);
     }
 
     private void OnUISoundVolumeSliderValueChange(float value)
     {
-        AudioManager.Instance.SetUISoundVolume(value);
+        VolumeData.UIVolume = value;
+        AudioManager.Instance.SetUISoundVolume(VolumeData.UIVolume);
     }
 }

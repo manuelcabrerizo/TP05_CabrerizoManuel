@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fa057d024d0ba4cbded4d41f3ab942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VolumeData: {fileID: 11400000, guid: e0060e3e6ec59b049b07d6f7d0b5d69f, type: 2}
   audioMixer: {fileID: 24100000, guid: 69261160ebe3fa248a8029fb88de897b, type: 2}
   sfxAudioSourcePrefab: {fileID: 4323292316961585905, guid: 013cdadf895cb0944aff3a1c7e173fb7, type: 3}
   uiAudioSourcePrefab: {fileID: 6632331129710283285, guid: 0b2667ce33a05854499a2126ec0a686a, type: 3}

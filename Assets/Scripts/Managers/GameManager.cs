@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// test the renaming of the gihub repo
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;

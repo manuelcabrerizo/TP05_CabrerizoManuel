@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073f515055942d04c93781751a7a35c7, type: 3}
   m_Name: VolumeData
   m_EditorClassIdentifier: 
-  MasterVolume: 0.5
+  MasterVolume: 0.25
   MusicVolume: 1
   SfxVolume: 1
   UIVolume: 1

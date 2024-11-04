@@ -32,7 +32,7 @@ public class EntityLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(CheckCollisionLayer(collision.gameObject, layer))
+        if(Utils.CheckCollisionLayer(collision.gameObject, layer))
         {
             DecrementLife();
             Vector2 offset = (Vector2)_rigidbody2D.position - (Vector2)collision.gameObject.transform.position;
@@ -52,17 +52,12 @@ public class EntityLife : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CheckCollisionLayer(collision.gameObject, layer))
+        if (Utils.CheckCollisionLayer(collision.gameObject, layer))
         {
             DecrementLife();
             _rigidbody2D.velocity = new Vector2();
             _rigidbody2D.AddForce(Vector2.up * EntityData.DamageImpulse, ForceMode2D.Impulse);
         }
-    }
-
-    private bool CheckCollisionLayer(GameObject gameObject, LayerMask layer)
-    {
-        return ((1 << gameObject.layer) & layer.value) > 0;
     }
 
     private void DecrementLife()

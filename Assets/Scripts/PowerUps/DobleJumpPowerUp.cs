@@ -12,7 +12,7 @@ public class DobleJumpPowerUp : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (CheckCollisionLayer(collision.gameObject, layer))
+        if (Utils.CheckCollisionLayer(collision.gameObject, layer))
         {
             _animator.SetBool("Grabbed", true);
             GameManager.Instance.ActivateDobleJumpPowerUp();
@@ -29,8 +29,4 @@ public class DobleJumpPowerUp : MonoBehaviour
         }
     }
 
-    private bool CheckCollisionLayer(GameObject gameObject, LayerMask layer)
-    {
-        return ((1 << gameObject.layer) & layer.value) > 0;
-    }
 }

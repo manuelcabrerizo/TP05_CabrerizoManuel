@@ -13,6 +13,7 @@ public class HeroData : ScriptableObject
     [Header("Jump")]
     public float JumpImpulse = 50.0f;
 
+    // TODO: take this out of SO
     [Header("Grounded")]
     public bool Grounded = false;
     public bool InitialGrounded = false;

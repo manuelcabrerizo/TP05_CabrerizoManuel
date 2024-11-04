@@ -72,7 +72,7 @@ public class HeroMovement : MonoBehaviour
                 _jumpCount++;
             }
         }
-
+        // TODO: only update the animator when the values have change
         _animator.SetFloat("Velocity", _rigidBody2D.velocity.x);
         _animator.SetBool("IsGrounded", HeroData.Grounded);
     }

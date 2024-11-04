@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4367fd631d31e54fad9243a48d3a5dd, type: 3}
   m_Name: AudioClipsData
   m_EditorClassIdentifier: 
-  MainMusicClip: {fileID: 0}
+  MainMusicClip: {fileID: 8300000, guid: 81af99dbce7921e4b963676267cbdd03, type: 3}
   BossBattleMusicClip: {fileID: 0}
   JumpClip: {fileID: 8300000, guid: 73aa159c3ddc80a44bbd6deb62a94594, type: 3}
   LandClip: {fileID: 8300000, guid: 79c00106ad40644479544756b1b42e38, type: 3}

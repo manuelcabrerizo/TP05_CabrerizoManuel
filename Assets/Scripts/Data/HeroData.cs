@@ -15,7 +15,7 @@ public class HeroData : ScriptableObject
 
     // TODO: take this out of SO
     [Header("Grounded")]
-    public bool Grounded = false;
+    //public bool Grounded = false;
     public bool InitialGrounded = false;
 
     [Header("Input")]

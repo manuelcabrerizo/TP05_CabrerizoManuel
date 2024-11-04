@@ -11,11 +11,8 @@ public enum AudioSourceType
 
 public class AudioManager : MonoBehaviour
 {
-    // TODO: put "_" prefix on private members ...
-
     public static AudioManager Instance;
 
-    [SerializeField] private VolumeData VolumeData;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource sfxAudioSourcePrefab;
     [SerializeField] private AudioSource uiAudioSourcePrefab;
@@ -70,12 +67,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // Set the volume to the stored values
-        AudioManager.Instance.SetMasterVolume(VolumeData.MasterVolume);
-        AudioManager.Instance.SetMusicVolume(VolumeData.MusicVolume);
-        AudioManager.Instance.SetSoundEffectVolume(VolumeData.SfxVolume);
-        AudioManager.Instance.SetUISoundVolume(VolumeData.UIVolume);
-        StopMusic();
     }
 
     private void Update()
@@ -146,33 +137,25 @@ public class AudioManager : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        audioMixer.SetFloat("MasterVolume", LinearToDecibel(volume));
+        audioMixer.SetFloat("MasterVolume", Utils.LinearToDecibel(volume));
     }
 
     public void SetMusicVolume(float volume)
     {
-        audioMixer.SetFloat("MusicVolume", LinearToDecibel(volume));
+        audioMixer.SetFloat("MusicVolume", Utils.LinearToDecibel(volume));
     }
 
     public void SetSoundEffectVolume(float volume)
     {
-        audioMixer.SetFloat("SfxVolume", LinearToDecibel(volume));
+        audioMixer.SetFloat("SfxVolume", Utils.LinearToDecibel(volume));
     }
 
     public void SetUISoundVolume(float volume)
     {
-        audioMixer.SetFloat("UIVolume", LinearToDecibel(volume));
+        audioMixer.SetFloat("UIVolume", Utils.LinearToDecibel(volume));
     }
 
-    private float LinearToDecibel(float linear)
-    {
-        float dB;
-        if (linear != 0)
-            dB = 20.0f * Mathf.Log10(linear);
-        else
-            dB = -144.0f;
-        return dB;
-    }
+
 
 
     private AudioSource CreateSfxAudioSource()

@@ -21,13 +21,17 @@ public class HeroMovement : MonoBehaviour
 
     public float Direction => _direction;
 
+    private bool _grounded;
+    private bool _lastGrounded;
+
     void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _animator = GetComponentInChildren<Animator>();
 
-        HeroData.Grounded = HeroData.InitialGrounded;
+        _grounded = HeroData.InitialGrounded;
+        _lastGrounded = HeroData.InitialGrounded;
         _direction = EntityData.InitialDirection;
 
         _solid = LayerMask.GetMask("Solid");
@@ -58,12 +62,12 @@ public class HeroMovement : MonoBehaviour
 
         if (Input.GetKeyDown(HeroData.JumpButton))
         {
-            if (HeroData.Grounded)
+            if (_grounded)
             {
                 _jumpCount = 0;
             }
 
-            if (((_jumpCount == 0) && HeroData.Grounded) ||
+            if (((_jumpCount == 0) && _grounded) ||
                 ((_jumpCount > 0) && (_jumpCount < _maxJumps)))
             {
                 AudioManager.Instance.PlayClip(AudioClipsData.JumpClip, AudioSourceType.SFX);
@@ -72,9 +76,15 @@ public class HeroMovement : MonoBehaviour
                 _jumpCount++;
             }
         }
-        // TODO: only update the animator when the values have change
+        
+
         _animator.SetFloat("Velocity", _rigidBody2D.velocity.x);
-        _animator.SetBool("IsGrounded", HeroData.Grounded);
+        
+        if (_grounded != _lastGrounded)
+        {
+            _animator.SetBool("IsGrounded", _grounded);
+        }
+        _lastGrounded = _grounded;
     }
 
     private void FixedUpdate()
@@ -94,16 +104,16 @@ public class HeroMovement : MonoBehaviour
         RaycastHit2D hitGround1 = Physics2D.Raycast(origin1, Vector2.down, scaleY, _solid);
         if (hitGround0.collider != null || hitGround1.collider != null)
         {
-            if (HeroData.Grounded == false) 
+            if (_grounded == false) 
             {
                 AudioManager.Instance.PlayClip(AudioClipsData.LandClip, AudioSourceType.SFX);
                 _jumpCount = 0;
             }
-            HeroData.Grounded = true;
+            _grounded = true;
         }
         else
         {
-            HeroData.Grounded = false;
+            _grounded = false;
         } 
     }
 

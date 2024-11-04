@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// test the renaming of the gihub repo
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -45,6 +44,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        //AudioManager.Instance.PlayMusic();
         stateMachine.PushState(playState);
     }
 

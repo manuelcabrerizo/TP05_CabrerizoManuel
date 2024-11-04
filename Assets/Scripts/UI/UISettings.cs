@@ -1,17 +1,18 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UISettings : MonoBehaviour
 {
-    [SerializeField] private VolumeData VolumeData;
-
     [SerializeField] private Button backButton;
 
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider soundEffectVolumeSlider;
     [SerializeField] private Slider uiSoundVolumeSlider;
+
+    [SerializeField] private AudioMixer _audioMixer;
 
     void Awake()
     {
@@ -24,11 +25,19 @@ public class UISettings : MonoBehaviour
 
     private void Start()
     {
-        // Initialize the sliders
-        masterVolumeSlider.value = VolumeData.MasterVolume;
-        musicVolumeSlider.value = VolumeData.MusicVolume;
-        soundEffectVolumeSlider.value = VolumeData.SfxVolume;
-        uiSoundVolumeSlider.value = VolumeData.UIVolume;
+        float volume = 0;
+        // Set Master Volume Slider
+        _audioMixer.GetFloat("MasterVolume", out volume);
+        masterVolumeSlider.value = Utils.DecibelToLinear(volume);
+        // Set Music Volume Slider
+        _audioMixer.GetFloat("MusicVolume", out volume);
+        musicVolumeSlider.value = Utils.DecibelToLinear(volume);
+        // Set Sfx Volume Slider
+        _audioMixer.GetFloat("SfxVolume", out volume);
+        soundEffectVolumeSlider.value = Utils.DecibelToLinear(volume);
+        // Set UI Volume Slider
+        _audioMixer.GetFloat("UIVolume", out volume);
+        uiSoundVolumeSlider.value = Utils.DecibelToLinear(volume);
     }
 
     // Update is called once per frame
@@ -59,25 +68,21 @@ public class UISettings : MonoBehaviour
 
     private void OnMasterVolumeSliderValueChange(float value)
     {
-        VolumeData.MasterVolume = value;
-        AudioManager.Instance.SetMasterVolume(VolumeData.MasterVolume);
+        AudioManager.Instance.SetMasterVolume(value);
     }
 
     private void OnMusicVolumeSliderValueChange(float value)
     {
-        VolumeData.MusicVolume = value;
-        AudioManager.Instance.SetMusicVolume(VolumeData.MusicVolume);
+        AudioManager.Instance.SetMusicVolume(value);
     }
 
     private void OnSoundEffectVolumeSliderValueChange(float value)
     {
-        VolumeData.SfxVolume = value;
-        AudioManager.Instance.SetSoundEffectVolume(VolumeData.SfxVolume);
+        AudioManager.Instance.SetSoundEffectVolume(value);
     }
 
     private void OnUISoundVolumeSliderValueChange(float value)
     {
-        VolumeData.UIVolume = value;
-        AudioManager.Instance.SetUISoundVolume(VolumeData.UIVolume);
+        AudioManager.Instance.SetUISoundVolume(value);
     }
 }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class AudioClipsData : ScriptableObject
 {
-    [Header("Music")]
-    public AudioClip MainMusicClip;
-    public AudioClip BossBattleMusicClip;
     [Header("Sound Effects")]
     public AudioClip JumpClip;
     public AudioClip LandClip;

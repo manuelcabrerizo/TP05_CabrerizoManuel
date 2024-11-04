@@ -15,6 +15,11 @@ public class UIMainMenu : MonoBehaviour
         exitButton.onClick.AddListener(OnExitButtonClicked);
     }
 
+    private void Start()
+    {
+        AudioManager.Instance.StopMusic();
+    }
+
     private void OnDestroy()
     {
         playButton.onClick.RemoveAllListeners();
